@@ -7,6 +7,7 @@ typedef enum {
     TOKEN_INT,
     TOKEN_PLUS,
     TOKEN_MINUS,
+    TOKEN_MUL,
     TOKEN_EOF,
     // ... other token types
 } TokenType;
@@ -26,6 +27,8 @@ Token getNextToken() {
         {TOKEN_INT, "10"},
         {TOKEN_PLUS, "+"},
         {TOKEN_INT, "20"},
+        {TOKEN_MUL, "*"},
+        {TOKEN_INT, "5"},
         {TOKEN_EOF, "EOF"}
     };
     return tokens[currentToken++];
@@ -38,6 +41,8 @@ void parse() {
         if (token.type == TOKEN_INT) {
             printf("Parsed integer: %s\n", token.value);
         } else if (token.type == TOKEN_PLUS) {
+            printf("Parsed operator: %s\n", token.value);
+        } else if (token.type == TOKEN_MUL) {
             printf("Parsed operator: %s\n", token.value);
         }
         // ... handle other token types
